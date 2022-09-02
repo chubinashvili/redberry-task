@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Landing from './routes/landing/Landing.component';
-import EmployeeInfo from './routes/employee-info/EmployeeInfo';
+import EmployeeInfo from './routes/employee-info/EmployeeInfo.component';
 import LaptopInfo from './routes/laptop-info/LaptopInfo.component';
 import SuccessfulEnd from './routes/successful-end/SuccessfulEnd.component';
 import { Fragment } from 'react';

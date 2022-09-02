@@ -5,11 +5,16 @@ import { ReactComponent as Layer } from '../../assets/Layer.svg';
 import { ReactComponent as Group } from '../../assets/Group.svg';
 
 export const LandingContainer = styled.section`
-    height: 100vh;
+    width: 1920px;
+    height: 1080px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 800px) {
+        width: 390px;
+        height: 844px;
+    }
 `
 
 export const LogoContainer = styled(Logo)`

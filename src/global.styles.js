@@ -1,13 +1,21 @@
 import { createGlobalStyle } from 'styled-components';
 
+import HelveticaNeue from './fonts/HelveticaNeue.ttc';
+
 export const GlobalStyle = createGlobalStyle`
+    @font-face {
+        font-family: Helvetica Neue;
+        src: url(${HelveticaNeue})
+        font-style: normal;
+        font-weight: 500;
+    }
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
     body {
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Helvetica Neue';
     }
     a {
         text-decoration: none;
