@@ -27,7 +27,7 @@ const ListItemPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`https://pcfy.redberryinternship.ge/api/laptop/${id}?token=578212f0cdba6e42b56f90a34e71f75d`)
+      const response = await fetch(`https://pcfy.redberryinternship.ge/api/laptop/${id}?token=3540551112233cd277a4f6ece7e6aa19`)
       const { data } = await response.json();
       const positionsResponse = await fetch('https://pcfy.redberryinternship.ge/api/positions')
       const { data: positionsData } = await positionsResponse.json();

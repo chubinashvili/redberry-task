@@ -1,17 +1,20 @@
-import { Fragment } from 'react';
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Landing from './routes/landing/Landing.component';
-import EmployeeInfo from './routes/employee-info/EmployeeInfo.component';
-import LaptopInfo from './routes/laptop-info/LaptopInfo.component';
-import SuccessfulEnd from './routes/successful-end/SuccessfulEnd.component';
-import List from './routes/list/List.component';
+import Spinner from './components/spinner/Spinner.component';
 
 import { GlobalStyle } from './global.styles';
 
+const Landing = lazy(() => import('./routes/landing/Landing.component'));
+const EmployeeInfo = lazy(() => import('./routes/employee-info/EmployeeInfo.component'));
+const LaptopInfo = lazy(() => import('./routes/laptop-info/LaptopInfo.component'));
+const SuccessfulEnd = lazy(() => import('./routes/successful-end/SuccessfulEnd.component'));
+const List = lazy(() => import('./routes/list/List.component'));
+
+
 const App = () => {
   return (
-    <Fragment>
+    <Suspense fallback={<Spinner />}>
       <GlobalStyle />
       <Routes>
         <Route path='/' element={<Landing />}/>
@@ -20,7 +23,7 @@ const App = () => {
         <Route path='/successful-end' element={<SuccessfulEnd />}/>
         <Route path='/list/*' element={<List />} />
       </Routes>
-    </Fragment>
+    </Suspense>
   )
 }
 

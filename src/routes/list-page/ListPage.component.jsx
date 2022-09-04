@@ -17,7 +17,7 @@ const ListPage = () => {
   const [displayData, setDisplayData] = useState()
   useEffect(() => {
     fetch(
-      'https://pcfy.redberryinternship.ge/api/laptops?token=578212f0cdba6e42b56f90a34e71f75d',
+      'https://pcfy.redberryinternship.ge/api/laptops?token=3540551112233cd277a4f6ece7e6aa19',
     )
       .then(response => response.json())
       .then(responseData => setDisplayData(responseData.data.reverse()))
