@@ -4,7 +4,7 @@ import HelveticaNeue from './fonts/HelveticaNeue.ttc';
 
 export const GlobalStyle = createGlobalStyle`
     @font-face {
-        font-family: Helvetica Neue;
+        font-family: HelveticaNeue;
         src: url(${HelveticaNeue})
         font-style: normal;
         font-weight: 500;
@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
     }
     body {
-        font-family: 'Helvetica Neue';
+        font-family: 'HelveticaNeue';
     }
     a {
         text-decoration: none;

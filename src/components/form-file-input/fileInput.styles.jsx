@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 import { ReactComponent as Vector} from '../../assets/ImgRequiredVector.svg'
+import { ReactComponent as MobileVector } from '../../assets/MobileUploadVector.svg';
+import { ReactComponent as RequiredVectorMobile } from '../../assets/ImgRequiredVectorMobile.svg';
+
 
 export const FileInputContainer = styled.div`
     display: flex;
@@ -20,6 +23,21 @@ export const FileInputContainer = styled.div`
         background: '#FFF1F1',
         border: '2px dashed #E52F2F'
     }}; 
+    @media screen and (max-width: 800px) {
+        border-radius: 8px;
+        width: 358px;
+        height: 540px;
+        padding: 50px 0 35px;
+        margin-bottom: 20px;
+    }
+`
+
+export const FilledFileInputContainer = styled.div`
+    margin-bottom: 20px;
+    @media screen and (max-width: 800px) {
+        height: 540px;
+        margin: 0;
+    }
 `
 
 export const ImgRequiredVector = styled(Vector)`
@@ -28,6 +46,26 @@ export const ImgRequiredVector = styled(Vector)`
     ${({error}) => error && {
         display: 'block',
     }}; 
+    @media screen and (max-width: 800px) {
+        display: none;
+    }
+`
+
+export const ImgRequiredVectorMobile = styled(RequiredVectorMobile)`
+    margin-top: 10px;
+    display: none;
+    @media screen and (max-width: 800px) {
+        ${({error}) => error && {
+            display: 'block',
+        }}; 
+    }
+`
+
+export const MobileUploadVector = styled(MobileVector)`
+    display: none;
+    @media screen and (max-width: 800px) {
+        display: inline-block;
+    }
 `
 
 export const Image = styled.img`
@@ -36,6 +74,11 @@ export const Image = styled.img`
     border-radius: 18px;
     border: none;
     background-size: cover;
+    @media screen and (max-width: 800px) {
+        border-radius: 8px;
+        width: 358px;
+        height: 181px;
+    }
 `
 
 export const GuideText = styled.p`
@@ -50,6 +93,27 @@ export const GuideText = styled.p`
     ${({error}) => error && {
         color: '#E52F2F',
     }}; 
+    @media screen and (max-width: 800px) {
+        display: none;
+    }
+`
+
+export const MobileGuideText = styled.p`
+    width: 146px;
+    height: 52px;    
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    display: none;
+    text-align: center;
+    color: #4386A9;
+    margin-top: 20px;
+    ${({error}) => error && {
+        color: '#E52F2F',
+    }}; 
+    @media screen and (max-width: 800px) {
+        display: inline-block;
+    }
 `
 
 export const UploadBtn = styled.button`
@@ -63,7 +127,21 @@ export const UploadBtn = styled.button`
     line-height: 24px;
     color: #FFFFFF;
     cursor: pointer;
-    margin-top 30px;
+    margin-top: 30px;
+    @media screen and (max-width: 800px) {
+        ${({btnOne}) => btnOne && {
+            display: 'none',
+        }}; 
+        ${({btnOne}) => !btnOne && {
+            fontSize: '18px',
+            lineHeight: '22px',
+            width: '187px',
+            height: '46px',
+        }}; 
+        font-size: 18px;
+        line-height: 22px;
+        margin-top: 0;
+    }
 `
 
 export const Details = styled.div`
@@ -73,16 +151,36 @@ export const Details = styled.div`
     align-items: center;
 `
 
+
 export const ImageInfo = styled.div`
     display: flex;
+    align-items: center;
+    padding-top: 16px;
+    @media screen and (max-width: 800px) {
+        padding: 0;
+    }
+`
+
+export const Info = styled.div`
+    display: flex;
+    padding-left: 25px;
+    @media screen and (max-width: 800px) {
+        padding-left: 10px;
+        flex-direction: column;
+    }
 `
 
 export const ImgName = styled.p`
-    margin: 0 10px;
+    margin-right: 20px;
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
     color: #202020;
+    @media screen and (max-width: 800px) {
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 3px;
+    }
 `
 
 export const ImgSize = styled.p`
@@ -90,4 +188,8 @@ export const ImgSize = styled.p`
     font-size: 18px;
     line-height: 21px;
     color: #5F5F5F;
+    @media screen and (max-width: 800px) {
+        font-size: 12px;
+        line-height: 14px;
+    }
 `

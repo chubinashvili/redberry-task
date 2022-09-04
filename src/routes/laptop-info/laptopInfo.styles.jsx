@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as LineTwo } from '../../assets/LineTwo.svg';
-import { ReactComponent as Logo } from '../../assets/LOGO-10-2.svg';
-// import { ReactComponent as BorderLine } from '../../assets/FormBorderLine.svg';
 
 import { 
     MainContainerProps, 
@@ -16,7 +14,7 @@ export const LaptopInfoContainer = styled.section`
     height: 1921px;
     ${MainContainerProps};
     @media screen and (max-width: 800px) {
-        width: 390px;
+        height: 1811px;
     }
 `
 
@@ -30,8 +28,7 @@ export const LaptopFormContainer = styled.form`
     display: flex;
     ${FormContainerProperties};
     @media screen and (max-width: 800px) {
-        margin-top: 850px;
-        width: 100%;
+        height: 1600px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -43,16 +40,21 @@ export const LaptopFormPartContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+    }
 `
-
-// export const FormBorderLine = styled(BorderLine)`
-
-// `
 
 export const LaptopButtonContainer = styled.p`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 800px) {
+        width: 390px;
+        padding-top: 40px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 `
 
 export const BackLink = styled(Link)`
@@ -68,5 +70,20 @@ export const BackLink = styled(Link)`
 export const LaptopLinkContainer = styled(Link)`
     position: relative;
     right: 815px;
-    bottom: 1765px;
+    bottom: 1800px;
+    @media screen and (max-width: 800px) {
+        display: none;
+    }
 `
+
+export const LaptopLinkContainerMobile = styled(Link)`
+    display: none;
+    @media screen and (max-width: 800px) {
+        display: inline-block;
+        position: relative;
+        right: 170px;
+        bottom: 1710px;
+    }
+`
+
+

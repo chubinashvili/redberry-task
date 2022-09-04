@@ -11,6 +11,7 @@ import FormSelect from '../../components/form-select/FormSelect.component';
 import FormRadio from '../../components/form-radio/FormRadio.component';
 
 import { ReactComponent as GoBackGroup } from '../../assets/GoBackGroup.svg';
+import { ReactComponent as GoBackGroupMobile } from '../../assets/MobileVersionGroup.svg'
 
 import { 
   LaptopInfoContainer, 
@@ -20,7 +21,7 @@ import {
   LaptopButtonContainer,
   LaptopLinkContainer,
   BackLink,
-  // FormBorderLine,
+  LaptopLinkContainerMobile,
 } from '../laptop-info/laptopInfo.styles';
 
 import { 
@@ -66,8 +67,14 @@ const LaptopInfo = () => {
   const onSubmit = () => {
     const sendData = JSON.parse(localStorage.getItem('data'));
     
+    const date = new Date(sendData?.laptop_purchase_date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    })
+
     const formData = new FormData();
-    formData.append('token', '578212f0cdba6e42b56f90a34e71f75d');
+    formData.append('token', '3540551112233cd277a4f6ece7e6aa19');
     formData.append('name', sendData.name);
     formData.append('surname', sendData.surname);
     formData.append('email', sendData.email);
@@ -81,7 +88,7 @@ const LaptopInfo = () => {
     formData.append('laptop_cpu_threads', sendData.laptop_cpu_threads);
     formData.append('laptop_ram', sendData.laptop_ram);
     formData.append('laptop_hard_drive_type', sendData.laptop_hard_drive_type);
-    formData.append('laptop_purchase_date', sendData.laptop_purchase_date.length > 1 ? sendData.laptop_purchase_date : '');
+    formData.append('laptop_purchase_date', sendData.laptop_purchase_date.length > 1 ? date : '');
     formData.append('laptop_price', sendData.laptop_price);
     formData.append('laptop_state', sendData.laptop_state);
     formData.append('laptop_image', watch().file[0]);
@@ -126,6 +133,7 @@ const LaptopInfo = () => {
             label='ლეპტოპის სახელი' 
             name='laptop_name' 
             type='text' 
+            placeholder='HP'
             errors={errors}
             forminputstypeone={true}
             guideMessage='ლათინური ასოები, ციფრები, !@#$%^&*()_+='
@@ -162,6 +170,7 @@ const LaptopInfo = () => {
             label='CPU-ს ბირთვი' 
             name='laptop_cpu_cores' 
             type='text' 
+            placeholder='14'
             errors={errors}
             forminputstypetwo={true}
             guideMessage='მხოლოდ ციფრები'
@@ -178,6 +187,7 @@ const LaptopInfo = () => {
             label='CPU-ს ნაკადი' 
             name='laptop_cpu_threads' 
             type='text' 
+            placeholder='365'
             errors={errors}
             forminputstypetwo={true}
             guideMessage='მხოლოდ ციფრები'
@@ -196,6 +206,7 @@ const LaptopInfo = () => {
             label='ლეპტოპის RAM (GB)'  
             name='laptop_ram' 
             type='text' 
+            placeholder='16'
             errors={errors} 
             forminputstypeone={true}
             guideMessage='მხოლოდ ციფრები'
@@ -232,9 +243,10 @@ const LaptopInfo = () => {
             label='ლეპტოპის ფასი'  
             name='laptop_price' 
             type='text' 
+            placeholder='0000'
             errors={errors} 
             forminputstypeone={true}
-            laptopPriceInput={true}
+            laptoppriceinput={true}
             guideMessage='მხოლოდ ციფრები'
             validation={{
               required: { value: true, message: 'მხოლოდ ციფრები' },
@@ -253,17 +265,20 @@ const LaptopInfo = () => {
           labelOne='ახალი'
           labelTwo='ძველი'
           valueOne='new'
-          valueTwo='old'
+          valueTwo='used'
           />
         <LaptopButtonContainer>
           <BackLink to='/employee-info'>უკან</BackLink>
-          <SubmitButton type='submit' value='დამახსოვრება' />
+          <SubmitButton laptopInfo={true} type='submit' value='დამახსოვრება' />
         </LaptopButtonContainer>
       </LaptopFormContainer>
       <div>
         <LaptopLinkContainer to='/employee-info'>
           <GoBackGroup />
-        </LaptopLinkContainer>          
+        </LaptopLinkContainer>    
+        <LaptopLinkContainerMobile to='/employee-info'>
+          <GoBackGroupMobile />
+        </LaptopLinkContainerMobile>      
         <RedberryLogo />
       </div>
     </LaptopInfoContainer>

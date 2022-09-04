@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { InputContainer, Input, Label, GuideMessage, ErrorMessage } from './formInput.styles';
+import { InputContainer, Input, Label, GuideMessage, ErrorMessage, LariSign } from './formInput.styles';
 
 const FormInput = ({ 
   register, 
@@ -13,16 +13,19 @@ const FormInput = ({
   forminputstypeone, 
   forminputstypetwo, 
   dateInput,
-  laptopPriceInput,
+  laptoppriceinput,
   surnameInput,
+  placeholder,
+  onblur
 }) => {
   return (
+    <>
     <InputContainer 
       type={type} 
       forminputstypeone={forminputstypeone} 
       forminputstypetwo={forminputstypetwo}
       dateInput={dateInput}
-      laptopPriceInput={laptopPriceInput}
+      laptoppriceinput={laptoppriceinput}
       surnameInput={surnameInput}
     >
       {label && <Label error={errors?.[name] ? true : false}  htmlFor={name}>{label}</Label>}
@@ -31,11 +34,16 @@ const FormInput = ({
         error={errors?.[name] ? true : false} 
         {...register(name, validation)}
         autoComplete='off'
+        placeholder={placeholder}
         forminputstypeone={forminputstypeone} 
         forminputstypetwo={forminputstypetwo}
       />
       {errors?.[name] ? <ErrorMessage>{errors?.[name]?.message}</ErrorMessage> : guideMessage && <GuideMessage>{guideMessage}</GuideMessage>}
     </InputContainer>
+    <LariSign 
+        laptoppriceinput={laptoppriceinput}
+    />
+    </>
   )
 }
 

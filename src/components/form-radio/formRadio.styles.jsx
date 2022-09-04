@@ -6,6 +6,10 @@ import { ReactComponent as Vector } from '../../assets/RadioVector.svg';
 export const RadioContainer = styled.div`
     width: 800px;
     height: 110px;
+    @media screen and (max-width: 800px) {
+        width: 358px;
+        margin-top: 8px;
+    }
 `
 
 export const Header = styled.p`
@@ -43,4 +47,5 @@ export const RadioInput = styled.input`
     border: 2px solid #4D9AC3;
     width: 20px;
     height: 20px;
+    
 `

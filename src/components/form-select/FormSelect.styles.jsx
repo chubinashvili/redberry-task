@@ -3,14 +3,19 @@ import styled from "styled-components";
 import { ReactComponent as Vector } from '../../assets/Vector.svg';
 
 export const SelectContainer = styled.p`
-    // align-self: center;
     margin-top: 17px;
     ${({forminputstypetwo}) => forminputstypetwo && {
-        marginRight: '9px'
+        marginRight: '9px',
     }}; 
     ${({forminputstypethree}) => forminputstypethree && {
-        marginTop: '0px'
+        marginTop: '0px',
     }}; 
+    @media screen and (max-width: 800px) {
+        width: 358px;
+        ${({forminputstypetwo}) => forminputstypetwo && {
+            marginRight: '0;',
+        }}; 
+    }
 `
 
 export const Select = styled.select`
@@ -24,11 +29,18 @@ export const Select = styled.select`
     }}; 
     height: 60px;
     padding-left: 12px;
-    border-radius: 1.8px;
+    border-radius: 8px;
     appearance: none;
     border: none;
     background: #EBEBEB;
     font-size: 14px;
+    &:focus {
+        border: none;
+        outline: 0;
+        ${({error}) => error  && {
+            border: '1.8px solid #E52F2F',
+        }};
+    }
     ${({error}) => error  && {
         border: '1.8px solid #E52F2F',
     }};
@@ -55,7 +67,7 @@ export const VectorContainer = styled(Vector)`
     }}; 
     pointer-events: none;
     @media screen and (max-width: 800px) {
-        left: 0px;
-        bottom: 0px;
+        bottom: 40px;
+        left: 325px;
     }
 `

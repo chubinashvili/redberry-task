@@ -17,6 +17,7 @@ const FormSelect = ({
   return (
     <SelectContainer
       forminputstypetwo={forminputstypetwo}
+      forminputstypeone={forminputstypeone} 
       forminputstypethree={forminputstypethree}
     >
         <Select 

@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+import { ReactComponent as LSign } from '../../assets/LariSign.svg';
+
 const MessageProperties = css`
     font-weight: 300;
     font-size: 14px;
@@ -19,18 +21,19 @@ export const InputContainer = styled.div`
     ${({dateInput}) => dateInput && {
         marginBottom: '18px'
     }}; 
-    ${({laptopPriceInput}) => laptopPriceInput && {
-        marginLeft: '30px'
+    ${({laptoppriceinput}) => laptoppriceinput && {
+        marginLeft: '55px',
     }}; 
     ${({surnameInput}) => surnameInput && {
         marginLeft: '55px'
     }}; 
     width: 878px;
-    // margin-bottom: 20px;
     @media screen and (max-width: 800px) {
         margin-bottom: 8px;
-        width: 406px;
+        width: 390px;
         height: 134px;
+        margin: 0;
+        padding: 10px 15px;
     }
 `
 
@@ -57,13 +60,12 @@ export const Input = styled.input`
     height: 60px;
     padding: 5px 20px;
     border: 1.8px solid #8AC0E2;
-    border-radius: 1.8px;
+    border-radius: 8px;    
     color: rgba(0, 0, 0, 0.6);
     font-weight: 400;
     font-size: 17px;
     margin: 4px 0;
     line-height: 21px;
-    
     ${({error}) => error  && {
         border: '1.8px solid #E52F2F',
         background: '#FFFFFF',
@@ -80,7 +82,8 @@ export const Input = styled.input`
     }
     @media screen and (max-width: 800px) {
         width: 358px;
-        margin: 2px 0;
+        margin: 3px 0;
+        padding: 8px 18px;
     }
 `
 
@@ -92,5 +95,20 @@ export const GuideMessage = styled.p`
 export const ErrorMessage = styled.p`
     color: #E52F2F;
     ${MessageProperties}; 
+`
+
+export const LariSign = styled(LSign)`
+    display: none;
+    position: absolute;
+    right: 28.2%;
+    ${({laptoppriceinput}) => laptoppriceinput  && {
+        display: 'inline-block',
+    }};
+    @media screen and (max-width: 800px) {
+        width: 13px;
+        height: 15.17px;
+        right: 9%;
+        top: 174.8%;
+    }
 `
 

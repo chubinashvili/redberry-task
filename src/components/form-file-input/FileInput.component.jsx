@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 
 import { ReactComponent as UploadImgVector } from '../../assets/UploadImgVector.svg';
 
 import { 
   FileInputContainer, 
+  FilledFileInputContainer,
   Image, 
   ImgRequiredVector,
   GuideText, 
@@ -13,6 +13,10 @@ import {
   ImageInfo,
   ImgName,
   ImgSize,
+  MobileUploadVector,
+  MobileGuideText,
+  ImgRequiredVectorMobile,
+  Info,
 } from './fileInput.styles';
 
 
@@ -43,20 +47,27 @@ const FileInput = ({ register, errors, setValue, watch }) => {
                 <ImgRequiredVector 
                   error={errors?.['file'] ? true : false}
                 />
+                <MobileUploadVector />
                 <GuideText
                   error={errors?.['file'] ? true : false}
                 >ჩააგდე ან ატვირთე ლეპტოპის ფოტო</GuideText>
+                 <MobileGuideText
+                  error={errors?.['file'] ? true : false}
+                >ლეპტოპის ფოტოს ატვირთვა</MobileGuideText>
+                <ImgRequiredVectorMobile 
+                  error={errors?.['file'] ? true : false}
+                />
                 <input
                   type="file"
                   {...register('file', { required: true })}
                   {...getInputProps()}
                 />
-                <UploadBtn>ატვირთე</UploadBtn>
+                <UploadBtn btnOne={true}>ატვირთე</UploadBtn>
               </FileInputContainer>
             </>
           )}
           {(file && file[0] instanceof File) && (
-            <div
+            <FilledFileInputContainer
               {...getRootProps({ onClick: e => e.preventDefault() })}
             >
               {(watch().file && watch().file[0] instanceof File) && (
@@ -72,12 +83,16 @@ const FileInput = ({ register, errors, setValue, watch }) => {
               <Details>
                 <ImageInfo>
                   <UploadImgVector />
-                  <ImgName>{watch().file[0].name}</ImgName>
-                  <ImgSize>{watch().file[0].size / 1024 } mb</ImgSize>
+                  <Info>
+                    <ImgName>
+                      {watch().file[0].name.substring(0, 18)}
+                    </ImgName>
+                    <ImgSize>{(watch().file[0].size / 1024 / 1042).toFixed(2)} mb</ImgSize>
+                  </Info>
                 </ImageInfo>
                 <UploadBtn>თავიდან ატვირთე</UploadBtn>
               </Details>
-            </div>
+            </FilledFileInputContainer>
           )}
       </>
     );

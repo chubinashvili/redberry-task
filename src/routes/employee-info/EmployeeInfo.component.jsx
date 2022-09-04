@@ -9,18 +9,20 @@ import FormInput from '../../components/form-input/FormInput.component';
 import FormSelect from '../../components/form-select/FormSelect.component';
 
 import { ReactComponent as GoBackGroup } from '../../assets/GoBackGroup.svg';
+import { ReactComponent as GoBackGroupMobile } from '../../assets/MobileVersionGroup.svg'
 
 import { 
   EmployeeInfoContainer, 
   HeadersContainer, 
   MainHeader,
   HeaderLine,
-  FormContainer, 
+  FormContainer,
   Inputs, 
   ButtonContainer,
   SubmitButton,
   RedberryLogo,
   LinkContainer,
+  LinkContainerMobile,
 } from './employeeInfo.styles';
 
 const EmployeeInfo = () => {
@@ -96,6 +98,7 @@ const EmployeeInfo = () => {
             errors={errors}
             forminputstypeone={true}
             guideMessage='მინიმუმ 2 სიმბოლო, ქართული ასოები'
+            placeholder='გრიშა'
             validation={{
               required: { value: true, message: 'მინიმუმ 2 სიმბოლო, ქართული ასოები' },
               minLength: {
@@ -116,6 +119,7 @@ const EmployeeInfo = () => {
             errors={errors}
             forminputstypeone={true}
             surnameInput={true}
+            placeholder='ბაგრატიონი'
             guideMessage='მინიმუმ 2 სიმბოლო, ქართული ასოები'
             validation={{
               required: { value: true, message: 'მინიმუმ 2 სიმბოლო, ქართული ასოები' },
@@ -153,6 +157,7 @@ const EmployeeInfo = () => {
           label='მეილი' 
           name='email' 
           type='email' 
+          placeholder='grish666@redberry.ge'
           errors={errors}
           guideMessage='უნდა მთავრდებოდეს @redberry.ge-ით'
           validation={{
@@ -168,6 +173,7 @@ const EmployeeInfo = () => {
           label='ტელეფონი'  
           name='phone_number' 
           type='tel' 
+          placeholder='+995 598 00 07 01'
           errors={errors} 
           guideMessage='უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს'
           validation={{
@@ -186,6 +192,9 @@ const EmployeeInfo = () => {
         <LinkContainer to='/'>
           <GoBackGroup />
         </LinkContainer>          
+        <LinkContainerMobile to='/'>
+          <GoBackGroupMobile />
+        </LinkContainerMobile>
         <RedberryLogo />
       </div>
     </EmployeeInfoContainer>
