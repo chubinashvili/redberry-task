@@ -158,7 +158,8 @@ export const LSignContainer = styled(LSign)`
     width: 16px;
     height: 14px;
     @media screen and (max-width: 800px) {
-        width: 12px;
+        width: 18px;
+        height: 18px;
         padding-top:7px;
     }
 `

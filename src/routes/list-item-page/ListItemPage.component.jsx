@@ -138,9 +138,6 @@ const ListItemPage = () => {
           )}
         </ListItemPart>
       </ListItem>
-      <ListItemLinkContainerMobile to='/list'>
-          <GoBackGroupMobile />
-      </ListItemLinkContainerMobile>  
       <ListItemLinkContainer to='/list'>
         <GoBackGroup />
       </ListItemLinkContainer>  
