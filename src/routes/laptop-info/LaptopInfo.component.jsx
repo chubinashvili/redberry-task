@@ -79,11 +79,11 @@ const LaptopInfo = () => {
     formData.append('surname', sendData.surname);
     formData.append('email', sendData.email);
     formData.append('phone_number', sendData.phone_number);
-    formData.append('team_id', sendData.team_id);
-    formData.append('position_id', sendData.position_id);
+    formData.append('team_id', sendData.team_id.id);
+    formData.append('position_id', sendData.position_id.id);
     formData.append('laptop_name', sendData.laptop_name);
-    formData.append('laptop_brand_id', sendData.laptop_brand_id);
-    formData.append('laptop_cpu', sendData.laptop_cpu);
+    formData.append('laptop_brand_id', sendData.laptop_brand_id.id);
+    formData.append('laptop_cpu', sendData.laptop_cpu.name);
     formData.append('laptop_cpu_cores', sendData.laptop_cpu_cores);
     formData.append('laptop_cpu_threads', sendData.laptop_cpu_threads);
     formData.append('laptop_ram', sendData.laptop_ram);
@@ -92,7 +92,6 @@ const LaptopInfo = () => {
     formData.append('laptop_price', sendData.laptop_price);
     formData.append('laptop_state', sendData.laptop_state);
     formData.append('laptop_image', watch().file[0]);
-
     fetch('https://pcfy.redberryinternship.ge/api/laptop/create', {
         method: 'POST',
         body: formData,
@@ -147,23 +146,26 @@ const LaptopInfo = () => {
           />
           <FormSelect 
             register={register}
-            name='laptop_brand_id'
+            selectName='laptop_brand_id'
             error={errors?.laptop_brand_id ? true : false}
             forminputstypeone={true}
+            forminputstypefour={true}
             value={watch().laptop_brand_id}
             disabledOptionText='ლეპტოპის ბრენდი'
-            optionsArray={brands}
+            brandsArray={brands}
+            setValue={setValue}
           />
         </LaptopFormPartContainer>
         <LaptopFormPartContainer>
           <FormSelect 
             register={register}
-            name='laptop_cpu'
+            selectName='laptop_cpu'
             error={errors?.laptop_cpu ? true : false}
             forminputstypetwo={true}
             value={watch().laptop_cpu}
             disabledOptionText='CPU'
-            cpus={cpus}
+            cpusArray={cpus}
+            setValue={setValue}
           />
           <FormInput 
             register={register} 

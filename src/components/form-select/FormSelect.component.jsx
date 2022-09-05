@@ -1,48 +1,83 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
-import { SelectContainer, Select, DisabledOption, VectorContainer } from './FormSelect.styles';
+import { CustomSelect, SelectContainer, Select, DisabledOption, Option, VectorContainer } from './FormSelect.styles';
+
+import useOnOutsideClick from '../../hooks/useOnOutsideClick';
 
 const FormSelect = ({
-  register,
-  name, 
   error, 
   value, 
   disabledOptionText, 
-  optionsArray, 
-  cpus,
+  teamsArray,
+  positionsArray,   
+  cpusArray,
+  brandsArray,
   forminputstypeone, 
   forminputstypetwo,
   forminputstypethree,
+  forminputstypefour,
   disabled,
+  setValue,
+  selectName,
+  register,
 }) => {
+  const [ open, setIsOpen ] = useState(false);
+  const ref = useRef()
+  useOnOutsideClick(ref, () => setIsOpen(false))
   return (
-    <SelectContainer
-      forminputstypetwo={forminputstypetwo}
-      forminputstypeone={forminputstypeone} 
-      forminputstypethree={forminputstypethree}
-    >
-        <Select 
-          {...register(name, { required: true })}
-          error={error}
-          forminputstypeone={forminputstypeone} 
-          forminputstypetwo={forminputstypetwo}
-          value={value}
-          disabled={disabled}
-        >
-            <DisabledOption disabled selected value=''>{disabledOptionText}</DisabledOption>
-            {optionsArray?.map(({id, name}) => (
-              <option key={name} value={id}>{name}</option>
-            ))}
-            {cpus?.map(({id, name}) => (
-              <option key={name} value={name}>{name}</option>
-            ))}
-        </Select>
+    <CustomSelect
+      ref={ref} 
+      >
+      <SelectContainer
+        forminputstypetwo={forminputstypetwo}
+        forminputstypeone={forminputstypeone} 
+        forminputstypethree={forminputstypethree}
+        onClick={() => setIsOpen(!open)}
+        error={error}
+        {...register(selectName, { required: true })} 
+        value={value}
+        disabled={disabled}
+      >
+        <DisabledOption>{value ? value.name : disabledOptionText}</DisabledOption>
         <VectorContainer 
           forminputstypeone={forminputstypeone} 
           forminputstypetwo={forminputstypetwo}
           forminputstypethree={forminputstypethree}
         />
-    </SelectContainer> 
+      </SelectContainer> 
+      {open && (
+        <Select
+          forminputstypeone={forminputstypeone} 
+          forminputstypetwo={forminputstypetwo}
+          forminputstypefour={forminputstypefour}
+        >
+          {teamsArray?.map(({id, name}) => (
+            <Option key={name} onClick={() => {
+              setValue(selectName, { id, name})
+              setIsOpen(false);
+            }}>{name}</Option>
+          ))}
+          {positionsArray?.map(({id, name, team_id}) => (
+            <Option key={name} onClick={() => {
+              setValue(selectName, { id, name, team_id})
+              setIsOpen(false);
+            }}>{name}</Option>
+          ))}
+          {cpusArray?.map(({id, name}) => (
+            <Option key={name} onClick={() => {
+              setValue(selectName, { id, name})
+              setIsOpen(false);
+            }}>{name}</Option>
+          ))}
+          {brandsArray?.map(({id, name}) => (
+            <Option key={name} onClick={() => {
+              setValue(selectName, { id, name})
+              setIsOpen(false);
+            }}>{name}</Option>
+          ))}
+        </Select>
+      )}
+    </CustomSelect>
   )
 }
 

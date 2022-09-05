@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useFormPersist from 'react-hook-form-persist';
@@ -54,12 +54,11 @@ const EmployeeInfo = () => {
       const { data: positionsData } = await positionsResponse.json();
       setTeams(teamsData);
       setPositions(positionsData.filter((position) => {
-        return position.team_id === watch().team_id * 1
+        return position.team_id === watch().team_id.id * 1
       }))
     }
     fetchData();
   }, [watch().team_id])
-  
   const onSubmit = () => {
     setData({
       ...data,
@@ -129,22 +128,25 @@ const EmployeeInfo = () => {
           />
         </Inputs>
         <FormSelect 
-          register={register}
-          name='team_id'
+          register={register} 
+          selectName='team_id'
           error={errors?.team_id ? true : false}
           value={watch().team_id}
           forminputstypethree={true}
+          forminputstypefour={true}
           disabledOptionText='თიმი'
-          optionsArray={teams}
+          teamsArray={teams}
+          setValue={setValue}
         />
         <FormSelect 
-          register={register}
-          name='position_id'
+          register={register} 
+          selectName='position_id'
           error={errors?.position_id ? true : false}
           value={watch().position_id}
           forminputstypethree={true}
           disabledOptionText='პოზიცია'
-          optionsArray={positions}
+          positionsArray={positions}
+          setValue={setValue}
           disabled={!watch().team_id ? true : false}
         />
         <FormInput 
