@@ -34,6 +34,14 @@ export const Select = styled.select`
     border: none;
     background: #EBEBEB;
     font-size: 14px;
+    cursor: pointer;
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    option {
+        background: #FFFFFF;
+    }
     &:focus {
         border: none;
         outline: 0;
@@ -64,7 +72,7 @@ export const VectorContainer = styled(Vector)`
     }}; 
     ${({forminputstypethree}) => forminputstypethree && {
         left: '843px;'
-    }}; 
+    }};     
     pointer-events: none;
     @media screen and (max-width: 800px) {
         bottom: 40px;
