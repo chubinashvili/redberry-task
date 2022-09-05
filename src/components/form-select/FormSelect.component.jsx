@@ -13,6 +13,7 @@ const FormSelect = ({
   forminputstypeone, 
   forminputstypetwo,
   forminputstypethree,
+  disabled,
 }) => {
   return (
     <SelectContainer
@@ -26,6 +27,7 @@ const FormSelect = ({
           forminputstypeone={forminputstypeone} 
           forminputstypetwo={forminputstypetwo}
           value={value}
+          disabled={disabled}
         >
             <DisabledOption disabled selected value=''>{disabledOptionText}</DisabledOption>
             {optionsArray?.map(({id, name}) => (

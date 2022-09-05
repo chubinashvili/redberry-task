@@ -29,7 +29,6 @@ const EmployeeInfo = () => {
   const { data, setData } = useContext(UserContext);
   const [ teams, setTeams ] = useState([]);
   const [ positions, setPositions ] = useState([]);
-  const [ filteredPositions, setFilteredPositions ] = useState([]);
   const navigate = useNavigate();
   const {
     register,
@@ -48,23 +47,18 @@ const EmployeeInfo = () => {
   });
 
   useEffect(() => {
-    fetch('https://pcfy.redberryinternship.ge/api/teams')
-      .then(response => response.json())
-      .then(responseData => setTeams(responseData.data))
-  }, [])
-
-  useEffect(() => {
-    fetch('https://pcfy.redberryinternship.ge/api/positions')
-      .then(response => response.json())
-      .then(responseData => setPositions(responseData.data));
-  }, []);
-  
-  useEffect(() => {
-    const filteredArray = positions.filter((position) => {
-      return position.team_id === watch().team_id * 1
-    })
-    setFilteredPositions(filteredArray)
-  },[watch().team_id])
+    const fetchData = async () => {
+      const teamsResponse = await fetch('https://pcfy.redberryinternship.ge/api/teams')
+      const { data: teamsData } = await teamsResponse.json();
+      const positionsResponse = await fetch('https://pcfy.redberryinternship.ge/api/positions')
+      const { data: positionsData } = await positionsResponse.json();
+      setTeams(teamsData);
+      setPositions(positionsData.filter((position) => {
+        return position.team_id === watch().team_id * 1
+      }))
+    }
+    fetchData();
+  }, [watch().team_id])
   
   const onSubmit = () => {
     setData({
@@ -150,7 +144,8 @@ const EmployeeInfo = () => {
           value={watch().position_id}
           forminputstypethree={true}
           disabledOptionText='პოზიცია'
-          optionsArray={filteredPositions}
+          optionsArray={positions}
+          disabled={!watch().team_id ? true : false}
         />
         <FormInput 
           register={register} 
